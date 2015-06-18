@@ -1,14 +1,13 @@
 package com.epam.textprocessing;
 
+import com.epam.textprocessing.entity.Sentence;
+import com.epam.textprocessing.logic.Parser;
+
 public class Runner {
     public static void main(String[] args) {
-//        String filePath = "D:\\text.txt";
-//        Text text = new Text(TextLoad.readFile(filePath));
-//        Text sortingByWordCount = Action.sortByWordCount(text);
-        String textString = "This is a  sample text. Hello world!";
-        String[] split = textString.split("(?<=[\\w])(?=[ .!?])|(?<=[ .!?])(?=\\w)");
-        for (String part : split) {
-            System.out.println(part);
-        }
+        String textString = "This is a sample text. Hello world!\nThis is a second sample text. Hello world!";
+        Parser parser = new Parser();
+        Sentence sentence = parser.parseSentence(textString);
+        System.out.println(sentence.toSourceString());
     }
 }

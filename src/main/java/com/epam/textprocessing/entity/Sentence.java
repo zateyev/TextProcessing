@@ -21,7 +21,7 @@ public class Sentence extends AbstractComposite<SentencePart> {
     public String toSourceString() {
         StringBuilder sb = new StringBuilder();
         for (SentencePart p : getComponents()) {
-            sb.append(" ").append(p.toSourceString());
+            sb.append(p.toSourceString());
         }
         return sb.toString();
     }

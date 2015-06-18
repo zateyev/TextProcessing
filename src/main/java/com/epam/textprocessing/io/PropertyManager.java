@@ -16,4 +16,7 @@ public class PropertyManager {
             e.printStackTrace();
         }
     }
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }
