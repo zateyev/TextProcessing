@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence extends AbstractComposite<SentencePart> {
-    private List<SentencePart> sentenceParts = new ArrayList<SentencePart>();
+    private List<SentencePart> sentenceParts = new ArrayList<>();
 
     public Sentence() {
     }
 
-    public Sentence(List<SentencePart> sentenceParts) {
-        this.sentenceParts = sentenceParts;
+    public Sentence(List<SentencePart> lexemes) {
+        this.sentenceParts = lexemes;
     }
 
     public List<SentencePart> getComponents() {

@@ -28,6 +28,7 @@ public class Text extends AbstractComposite<Paragraph> {
 
     @Override
     public void add(Paragraph paragraph) {
+        paragraphs.add(paragraph);
     }
 
     @Override

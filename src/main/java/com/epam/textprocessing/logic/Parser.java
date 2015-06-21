@@ -1,33 +1,30 @@
 package com.epam.textprocessing.logic;
 
 import com.epam.textprocessing.entity.*;
+import com.epam.textprocessing.io.Property;
 import com.epam.textprocessing.io.PropertyManager;
 
 public class Parser {
-    private final PropertyManager propertyManager = new PropertyManager("parser.properties");
-
-    public Sentence parseSentence(String textString) {
-        Sentence sentence = new Sentence();
-        String[] split = textString.split(propertyManager.getProperty("sentence_part_splitter"));
-        for (String part : split) {
-            if (part.length() == 1) sentence.add(new Symbol(part.charAt(0)));
-            else sentence.add(new Word(part));
+    public <T extends Composite> T parse(String textString, Class<T> clazz) throws IllegalAccessException, InstantiationException {
+        if (clazz.getName().equals(SentencePart.class.getName())) {
+            SentencePart sentencePart = new SentencePart();
+            if (textString.length() == 1) {
+                Symbol symbol = new Symbol(textString.charAt(0));
+                sentencePart.add(symbol);
+            } else {
+                Word word = new Word(textString);
+                sentencePart.add(word);
+            }
+            return (T) sentencePart;
         }
-        return sentence;
-    }
-
-    public Paragraph parseParagraph(String textString) {
-        Paragraph paragraph = new Paragraph();
-        String[] split = textString.split(propertyManager.getProperty("paragraph_splitter"));
-        for (String part : split) {
-            paragraph.add(parseSentence(part));
+        T composite = clazz.newInstance();
+        PropertyManager regex = new PropertyManager("regexes.properties");
+        Property currentClassName = new Property(clazz.getName());
+        String property = regex.getProperty(currentClassName.getRegex());
+        String[] split = textString.split(property);
+        for (String s : split) {
+            composite.add(parse(s, currentClassName.getClassPart()));
         }
-        return paragraph;
-    }
-
-    public Text parseText(String textString) {
-        Text text = new Text();
-        text.add(parseParagraph(textString));
-        return null;
+        return composite;
     }
 }
