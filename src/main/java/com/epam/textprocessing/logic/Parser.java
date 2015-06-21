@@ -19,11 +19,11 @@ public class Parser {
         }
         T composite = clazz.newInstance();
         PropertyManager regex = new PropertyManager("regexes.properties");
-        Property currentClassName = new Property(clazz.getName());
-        String property = regex.getProperty(currentClassName.getRegex());
+        Property currentClassProperty = new Property(clazz.getName());
+        String property = regex.getProperty(currentClassProperty.getRegex());
         String[] split = textString.split(property);
         for (String s : split) {
-            composite.add(parse(s, currentClassName.getClassPart()));
+            composite.add(parse(s, currentClassProperty.getClassPart()));
         }
         return composite;
     }

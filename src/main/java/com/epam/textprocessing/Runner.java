@@ -1,14 +1,16 @@
 package com.epam.textprocessing;
 
 import com.epam.textprocessing.entity.Sentence;
+import com.epam.textprocessing.io.TextLoad;
 import com.epam.textprocessing.logic.Parser;
 
 public class Runner {
     public static void main(String[] args) {
+        String book = TextLoad.readFile("book.txt");
         String textString = "This is a sample text. Hello world!\nThis is a second sample text. Hello world!";
         Parser parser = new Parser();
         try {
-            Sentence sentence = parser.parse(textString, Sentence.class);
+            Sentence sentence = parser.parse(book, Sentence.class);
             System.out.println(sentence.toSourceString());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
