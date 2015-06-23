@@ -17,17 +17,22 @@ public class Paragraph extends AbstractComposite<Sentence> {
         return sentences;
     }
 
+    public int getSentenceAmount() {
+        return sentences.size();
+    }
+
     @Override
     public String toSourceString() {
         StringBuilder sb = new StringBuilder();
         for (Sentence s : getComponents()) {
-            sb.append(" ").append(s.toSourceString());
+            sb.append(s.toSourceString());
         }
         return sb.toString();
     }
 
     @Override
     public void add(Sentence sentence) {
+        sentences.add(sentence);
     }
 
     @Override

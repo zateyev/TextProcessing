@@ -1,8 +1,13 @@
 package com.epam.textprocessing;
 
+import com.epam.textprocessing.entity.Paragraph;
 import com.epam.textprocessing.entity.Sentence;
+import com.epam.textprocessing.entity.Text;
 import com.epam.textprocessing.io.TextLoad;
+import com.epam.textprocessing.logic.Action;
 import com.epam.textprocessing.logic.Parser;
+
+import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
@@ -12,13 +17,11 @@ public class Runner {
         try {
             Sentence sentence = parser.parse(book, Sentence.class);
             System.out.println(sentence.toSourceString());
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
 
-//        String[] strarray = textString.split("\n+");
+//        String[] strarray = book.split("(?<=[.?!] )");
 //        for (String s : strarray) {
 //            System.out.println(s);
 //        }

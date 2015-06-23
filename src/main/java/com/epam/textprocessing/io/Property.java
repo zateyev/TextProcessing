@@ -12,7 +12,7 @@ public class Property {
         this.className = className;
     }
 
-    public String getRegex() {
+    public String getRegexKey() {
         Map<String, String> regexes = new HashMap<>();
         regexes.put(Text.class.getName(), "paragraph_splitter");
         regexes.put(Paragraph.class.getName(), "sentence_splitter");
@@ -22,9 +22,9 @@ public class Property {
 
     public Class<? extends Composite> getClassPart() {
         Map<String, Class<? extends Composite>> content = new HashMap<>();
+        content.put(Text.class.getName(), Paragraph.class);
         content.put(Paragraph.class.getName(), Sentence.class);
         content.put(Sentence.class.getName(), SentencePart.class);
-        content.put(Text.class.getName(), Paragraph.class);
         return content.get(this.className);
     }
 }
