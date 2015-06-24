@@ -6,11 +6,11 @@
            version="3.0">
 
     <servlet>
-        <servlet-name>OldServlet</servlet-name>
-        <servlet-class>com.epam.textprocessing.OldServlet</servlet-class>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.epam.textprocessing.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>OldServlet</servlet-name>
-        <url-pattern>/old</url-pattern>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
 </web-app>
