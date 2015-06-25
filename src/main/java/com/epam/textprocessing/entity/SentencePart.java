@@ -4,24 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SentencePart extends AbstractComposite<Lexeme> {
-    private List<Lexeme> lexemes = new ArrayList<>();
-
     public List<Lexeme> getComponents() {
-        return lexemes;
+        return super.getComponents();
     }
 
     @Override
     public void add(Lexeme lexeme) {
-        lexemes.add(lexeme);
+        super.add(lexeme);
     }
 
     @Override
     public Lexeme get(int index) {
-        return lexemes.get(index);
+        return super.get(index);
     }
 
     @Override
     public void remove(int index) {
+    }
+
+    @Override
+    public void clear() {
     }
 
     @Override

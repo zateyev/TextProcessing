@@ -1,26 +1,26 @@
 package com.epam.textprocessing.entity;
 
 public class Symbol implements Lexeme {
-    private Character punctuation;
+    private Character value;
 
     public Symbol() {
     }
 
     public Symbol(Character symbol) {
-        this.punctuation = symbol;
+        this.value = symbol;
     }
 
-    public Character getPunctuation() {
-        return punctuation;
+    public Character getValue() {
+        return value;
     }
 
     @Override
     public String toSourceString() {
-        return getPunctuation().toString();
+        return getValue().toString();
     }
 
     @Override
     public void setPart(String string) {
-        this.punctuation = string.charAt(0);
+        this.value = string.charAt(0);
     }
 }

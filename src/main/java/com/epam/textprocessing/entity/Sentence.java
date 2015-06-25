@@ -4,17 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence extends AbstractComposite<SentencePart> {
-    private List<SentencePart> sentenceParts = new ArrayList<>();
-
     public Sentence() {
     }
 
     public Sentence(List<SentencePart> lexemes) {
-        this.sentenceParts = lexemes;
+        super(lexemes);
     }
 
     public List<SentencePart> getComponents() {
-        return sentenceParts;
+        return super.getComponents();
     }
 
     @Override
@@ -28,7 +26,7 @@ public class Sentence extends AbstractComposite<SentencePart> {
 
     @Override
     public void add(SentencePart sentencePart) {
-        sentenceParts.add(sentencePart);
+        super.add(sentencePart);
     }
 
     @Override
@@ -38,5 +36,9 @@ public class Sentence extends AbstractComposite<SentencePart> {
 
     @Override
     public void remove(int index) {
+    }
+
+    @Override
+    public void clear() {
     }
 }

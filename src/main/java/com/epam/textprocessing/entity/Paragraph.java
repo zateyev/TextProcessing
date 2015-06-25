@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Paragraph extends AbstractComposite<Sentence> {
-    private List<Sentence> sentences = new ArrayList<Sentence>();
-
     public Paragraph() {
     }
 
     public Paragraph(List<Sentence> sentences) {
-        this.sentences = sentences;
+        super(sentences);
     }
 
     public List<Sentence> getComponents() {
-        return sentences;
+        return super.getComponents();
     }
 
     public int getSentenceAmount() {
-        return sentences.size();
+        return super.getComponents().size();
     }
 
     @Override
@@ -32,7 +30,7 @@ public class Paragraph extends AbstractComposite<Sentence> {
 
     @Override
     public void add(Sentence sentence) {
-        sentences.add(sentence);
+        super.add(sentence);
     }
 
     @Override
@@ -42,5 +40,9 @@ public class Paragraph extends AbstractComposite<Sentence> {
 
     @Override
     public void remove(int index) {
+    }
+
+    @Override
+    public void clear() {
     }
 }
